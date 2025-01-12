@@ -1,15 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, body_might_complete_normally_nullable
 
 import 'package:almaqsura/colors_app/colors_app.dart';
-import 'package:almaqsura/custom_wigets/custom_text_field_email.dart';
-import 'package:almaqsura/custom_wigets/custom_text_field_pass.dart';
+import 'package:almaqsura/custom_wigets/text_field/custom_text_field_email.dart';
+import 'package:almaqsura/custom_wigets/text_field/custom_text_field_pass.dart';
 import 'package:almaqsura/futuers/auth/view/creat_account_view.dart';
-import 'package:almaqsura/futuers/main_pages/main_view.dart';
+import 'package:almaqsura/futuers/app_user/u_main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
+  TextEditingController? name;
   TextEditingController? email;
   TextEditingController? pass;
   @override
@@ -19,19 +20,19 @@ class LoginView extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 33),
+              padding: const EdgeInsets.only(top: 43),
               child: SvgPicture.asset(
-                'assets/images/logo.svg',
+                'assets/images/logoo.svg',
               ),
             ),
-            SizedBox(
-              height: 25,
-            ),
-            Text(
-              'تسجيل دخول',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
+            Padding(
+              padding: const EdgeInsets.only(top: 25),
+              child: Text(
+                'تسجيل دخول',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             Padding(
@@ -47,7 +48,7 @@ class LoginView extends StatelessWidget {
                       fit: BoxFit.scaleDown,
                     ),
                     validator: (p0) {},
-                    controller: email,
+                    controller: name,
                   ),
                   CustomTextFieldEmail(
                     text: 'الايميل',
@@ -195,15 +196,18 @@ class LoginView extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 153, left: 153, top: 16),
+              padding: const EdgeInsets.only(top: 10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
                     'assets/images/google.svg',
                     width: 32.0,
                     height: 32.0,
                     fit: BoxFit.cover,
+                  ),
+                  SizedBox(
+                    width: 24,
                   ),
                   SvgPicture.asset(
                     'assets/images/facebook.svg',
@@ -214,9 +218,9 @@ class LoginView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 40,
-            )
+            // SizedBox(
+            //   height: 40,
+            // )
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_super_parameters
 
 import 'package:almaqsura/colors_app/colors_app.dart';
 import 'package:flutter/material.dart';
