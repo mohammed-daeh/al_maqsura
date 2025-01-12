@@ -1,28 +1,30 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, body_might_complete_normally_nullable
 
 import 'package:almaqsura/colors_app/colors_app.dart';
-import 'package:almaqsura/custom_wigets/custom_text_field_email.dart';
-import 'package:almaqsura/custom_wigets/custom_text_field_pass.dart';
+import 'package:almaqsura/custom_wigets/text_field/custom_text_field_email.dart';
+import 'package:almaqsura/custom_wigets/text_field/custom_text_field_pass.dart';
 import 'package:almaqsura/futuers/auth/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CreatAccountView extends StatelessWidget {
   CreatAccountView({super.key});
+  TextEditingController? name;
   TextEditingController? email;
   TextEditingController? pass;
   TextEditingController? confirmPassword;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
+          // mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 33),
-              child: SvgPicture.asset('assets/images/logo.svg'),
-        
+              padding: const EdgeInsets.only(top: 43),
+              child: SvgPicture.asset(
+                'assets/images/logoo.svg',
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 25),
@@ -67,7 +69,7 @@ class CreatAccountView extends StatelessWidget {
                     }
                     return null;
                   },
-                  controller: email,
+                  controller: name,
                 ),
                 CustomTextFieldPassword(
                   text: 'كلمة المرور',
@@ -155,12 +157,12 @@ class CreatAccountView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 40,
-            )
+            // SizedBox(
+            //   height: 40,
+            // )
           ],
         ),
-      )),
+      ),
     );
   }
 }

@@ -66,45 +66,48 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
+        // clipBehavior: Clip.none,
         children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                height: 553,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(20)),
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/on_boarding_image.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+          SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          Container(
+            height: 553,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+              image: DecorationImage(
+                image: AssetImage('assets/images/on_boarding_image.png'),
+                fit: BoxFit.cover,
               ),
-              Container(
-                height: 553,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(20),
-                  ),
-                  gradient: LinearGradient(colors: [
-                    ColorsApp.primaryColor.withOpacity(0.1),
-                    ColorsApp.primaryColor,
-                  ], stops: [
-                    0.3,
-                    1
-                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-                ),
+            ),
+          ),
+          Container(
+            height: 553,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(20),
               ),
-              Positioned(
-                left: 16,
-                // bottom: 50,
-                top: 307,
-                right: 16,
-                child: Container(
+              gradient: LinearGradient(colors: [
+                ColorsApp.primaryColor.withOpacity(0.1),
+                ColorsApp.primaryColor,
+              ], stops: [
+                0.3,
+                1
+              ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            ),
+          ),
+          Positioned(
+            left: 16,
+            // bottom: 50,
+            top: 307,
+            right: 16,
+            child: Column(
+              children: [
+                Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
@@ -124,46 +127,43 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 64),
+                            horizontal: 15, vertical: 64),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    mapOnBoarding[index]['title'].toString(),
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 22,
-                                    ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  mapOnBoarding[index]['title'].toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 22,
                                   ),
-                                  SizedBox(
-                                    height: 24,
+                                ),
+                                SizedBox(
+                                  height: 24,
+                                ),
+                                Text(
+                                  mapOnBoarding[index]['description1']
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
                                   ),
-                                  Text(
-                                    mapOnBoarding[index]['description1']
-                                        .toString(),
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                    ),
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                Text(
+                                  mapOnBoarding[index]['description2']
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
                                   ),
-                                  SizedBox(
-                                    height: 16,
-                                  ),
-                                  Text(
-                                    mapOnBoarding[index]['description2']
-                                        .toString(),
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                             SizedBox(
                               height: 32,
@@ -263,18 +263,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     },
                   ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 125,
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(mapOnBoarding.length, (index) {
-              return _buildDot(index: index);
-            }),
+                SizedBox(
+                  height: 32,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(mapOnBoarding.length, (index) {
+                    return _buildDot(index: index);
+                  }),
+                ),
+              ],
+            ),
           ),
         ],
       ),
